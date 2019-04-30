@@ -1,0 +1,45 @@
+<section>
+  <div class="container pt-2 pb-3">
+    <h5 class="section-title">File content</h5>
+
+    <div class="row">
+      <div class="col-12">
+
+        <!-- Filter section -->
+        <div class="form-inline mb-3 float-right">
+          <div class="form-group">
+            <label>Filter by issue count: &nbsp; </label>
+            <input type="text" class="form-control" [(ngModel)]="filterInput"
+              (ngModelChange)="onFilterValueChange($event)" numberOnly />
+          </div>
+        </div>
+
+        <!-- CSV table data -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col" class="column-header" *ngFor="let col of headerColumns">{{col.colName}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of dataRows">
+              <ng-container *ngFor="let col of row; let i = index">
+                <td *ngIf="col.colType == dateDataType">{{col.colValue | date: 'dd/MM/yyyy'}}</td>
+                <td *ngIf="col.colType != dateDataType">{{col.colValue}} </td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-info" role="alert" *ngIf="fileTotalRows > 0 && this.dataRows==0">
+          No records match your search value
+        </div>
+
+        <div class="alert alert-info" role="alert" *ngIf="fileTotalRows == 0">
+          No data available
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

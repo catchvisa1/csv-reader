@@ -1,0 +1,25 @@
+<section class="mt-3 mb-3">
+  <div class="container">
+    <h3 class="mt-2 mb-5 text-center"> Rabo assignment - CSV reader </h3>
+
+    <div class="row form-inline">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="fileLoader">Select a CSV file to parse and view the content</label>
+          <input type="file" id="fileLoader" accept=".csv" class="form-control p-1 file-loader"
+            placeholder="Choose a CSV file" (change)="onFileSelection($event)" />
+        </div>
+      </div>
+      <div class="col-1">
+        <div class="form-group">
+          <label>&nbsp;</label>
+          <button type="button" class="btn btn-primary read-button" [disabled]="disableReadButton"
+            (click)="showContentOnScreen()">Read</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-file-detail *ngIf="displayContentOnScreen" [fileInfo]="inputFile"></app-file-detail>
+<app-file-content *ngIf="displayContentOnScreen" [fileInfo]="inputFile"></app-file-content>

@@ -1,0 +1,57 @@
+<section class="bg-light mt-3 mb-3">
+  <div class="container pt-2 pb-3">
+    <h5 class="section-title">File details</h5>
+
+    <div class="alert alert-info" role="alert" *ngIf="!isContentAvailable">
+      No file details available to display
+    </div>
+
+    <div *ngIf="isContentAvailable">
+      <div class="row form-inline">
+        <div class="col-6">
+          <div class="form-group">
+            <label class="col-3 label-details">Name</label>
+            <div class="file-name-content">{{fileInfo.fileName}}</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label class="col-3 label-details">Size (bytes)</label>
+            <div>{{fileInfo.size}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row form-inline">
+        <div class="col-6">
+          <div class="form-group">
+            <label class="col-3 label-details">Type</label>
+            <div>{{fileType}}</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label class="col-3 label-details">Status</label>
+            <div>{{fileStatus}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row form-inline">
+        <div class="col-6">
+          <div class="form-group">
+            <label class="col-3 label-details">Total rows</label>
+            <div class="file-total-row-count">{{fileTotalRows}}</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label class="col-3 label-details">Total columns</label>
+            <div class="file-total-column-count">{{fileTotalColumns}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
